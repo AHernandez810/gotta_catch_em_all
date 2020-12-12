@@ -11,19 +11,31 @@ class Pokemon
         @ability = ability
         @@all << self 
     end 
-
+    
     def self.all 
         @@all
     end 
 
-    def self.list_pokemon
-        pokemon = API.new.get_pokemon_list
-        puts pokemon
+    def self.url(num)
+        "https://pokeapi.co/api/v2/pokemon?limit=15/#{num}/"
     end 
 
-    #def self.find_by_id(id)
-       # index = id.to_i - 1
-       # all[index]
-   # end 
+    def self.list_pokemon
+        (1..15).to_a.each do |num|
+            pokemon = API.new.get_all_url(url(num))
+            puts "Pokemon: #{num}. #{pokemon['name']}"
+            Pokemon.new(pokemon['name'])
+        end
+    end 
+
+    def to_s
+        "Name: #{@name}
+        Type: #{@type}
+        Evoultion: #{@evoultion}
+        Ability: #{@ability}"
+    end 
+
+    
     
 end
+Pokemon.list_pokemon

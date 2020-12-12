@@ -13,11 +13,9 @@ class CLI
     end
 
     def menu
-        "Which Pokemon do you want to learn more about? Select one below..."
-             Pokemon.all.each.with_index(1) do |pokemon, i|
-                puts "#{i += 1}. #{pokemon.name}"
-             end
-        end
+        Pokemon.all.each.with_index(1) do |pokemon, i|
+           puts "#{i += 1}. #{pokemon.name}"
+         end
     end
 
     def goodbye

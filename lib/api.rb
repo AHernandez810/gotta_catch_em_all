@@ -30,16 +30,20 @@ class API
         resp = Net::HTTP.get(uri)
         data = JSON.parse(resp)
     end
+
+    def get_all_url(pokemon_url)
+        response = HTTParty.get(@pokemon_url).parsed_response
+    end
 end 
 
-pokemon = API.new.get_pokemon_list
-puts pokemon
+#pokemon = API.new.get_pokemon_list
+#puts pokemon
 
-pokemon_type = API.new.get_pokemon_type
-puts pokemon_type
+#pokemon_type = API.new.get_pokemon_type
+#puts pokemon_type
 
-pokemon_evolution = API.new.get_pokemon_evolution
-puts pokemon_evolution
+#pokemon_evolution = API.new.get_pokemon_evolution
+#puts pokemon_evolution
 
-pokemon_abitlity = API.new.get_pokemon_abilities
-puts pokemon_abitlity
+#pokemon_abitlity = API.new.get_pokemon_abilities
+#puts pokemon_abitlity
