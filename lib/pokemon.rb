@@ -18,7 +18,7 @@ class Pokemon
 
     def self.list_pokemon
         pokemon = API.new.get_pokemon_list
-        puts "Pokemon: #{pokemon["name"]}"
+        puts pokemon
     end 
 
     #def self.find_by_id(id)
