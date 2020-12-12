@@ -1,6 +1,7 @@
 require 'net/http'
 require 'open-uri'
 require 'json'
+#require 'rest-client'
 #require 'pry'
 require_relative "./gotta_catch_em_all/version"
 require_relative "./api"

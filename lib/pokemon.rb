@@ -1,3 +1,4 @@
+require_relative './environment.rb'
 class Pokemon
     attr_accessor :name, :type, :evoultion, :ability
 
@@ -15,7 +16,14 @@ class Pokemon
         @@all
     end 
 
-    def pokemon_url
-        "https://pokeapi.co/api/v2/pokemon/#{num}"
-    end
+    def self.list_pokemon
+        pokemon = API.new.get_pokemon_list
+        puts "Pokemon: #{pokemon["name"]}"
+    end 
+
+    #def self.find_by_id(id)
+       # index = id.to_i - 1
+       # all[index]
+   # end 
+    
 end
