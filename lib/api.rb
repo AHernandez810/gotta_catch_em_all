@@ -23,7 +23,7 @@ class API
         data = JSON.parse(resp)
     end
 
-    def get_all_url(pokemon_url)
+    def get_poki_url
         response = HTTParty.get(@pokemon_url).parsed_response
     end
 end 

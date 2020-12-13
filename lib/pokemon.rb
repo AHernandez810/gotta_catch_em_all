@@ -14,6 +14,14 @@ class Pokemon
         @@all
     end 
 
+    def self.display_pokemons
+        menu_table = TTY::Table.new(header: ["Id", "Name"])
+        self.all.each.with_index(1) do |poki, i|
+            menu_table << ["#{i}".red, "#{poki.name}"]
+        end
+        puts menu_table.render(:unicode)
+    end
+
 
 
 
