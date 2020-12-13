@@ -13,9 +13,10 @@ class CLI
     end
 
     def menu
-        Pokemon.all.each.with_index(1) do |pokemon, i|
-           puts "#{i += 1}. #{pokemon.name}"
-         end
+      @api = API.new
+      @api.get_pokemon_list
+      Pokemon.display_pokemons
+      puts "Which Pokemon do you want learn more about?"
     end
 
     def goodbye
@@ -23,3 +24,4 @@ class CLI
         exit
     end
 end
+CLI.new.run
