@@ -5,5 +5,6 @@ gemspec
 
 gem "rake", "~> 12.0"
 #gem 'byebug'
-gem 'httparty'
+gem "tty-table"
+gem "colorize"
 

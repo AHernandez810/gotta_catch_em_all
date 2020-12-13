@@ -1,29 +1,21 @@
-require_relative './environment.rb'
+require_relative './pokemon'
 class API
     def initialize
-        @pokemon_url = "https://pokeapi.co/api/v2/pokemon?limit=15"
-        @pokemon_type = "https://pokeapi.co/api/v2/type?limit=15"
-        @pokemon_evolution = "https://pokeapi.co/api/v2/evolution-chain?=limit=15"
-        @pokemon_abitlity = "https://pokeapi.co/api/v2/ability?=15"
+        @pokemon_url = "https://pokeapi.co/api/v2/pokemon?limit=151"
+        @pokemon_abitlity = "https://pokeapi.co/api/v2/ability"
     end 
 
     def get_pokemon_list
         uri = URI.parse(@pokemon_url)
-        resp = Net::HTTP.get(uri)
-        data = JSON.parse(resp)
+        response = Net::HTTP.get_response(uri)
+        response.body
+        data = JSON.parse(response.body)
+        data["results"].each do |pokemon_hash|
+        #binding.pry
+            Pokemon.new(pokemon_hash['name'], pokemon_hash['url'])
+        end
     end
 
-    def get_pokemon_type
-        uri = URI.parse(@pokemon_type)
-        resp = Net::HTTP.get(uri)
-        data = JSON.parse(resp)
-    end
-
-    def get_pokemon_evolution
-        uri = URI.parse(@pokemon_evolution)
-        resp = Net::HTTP.get(uri)
-        data = JSON.parse(resp)
-    end 
 
     def get_pokemon_abilities
         uri = URI.parse(@pokemon_abitlity)
@@ -38,12 +30,3 @@ end
 
 #pokemon = API.new.get_pokemon_list
 #puts pokemon
-
-#pokemon_type = API.new.get_pokemon_type
-#puts pokemon_type
-
-#pokemon_evolution = API.new.get_pokemon_evolution
-#puts pokemon_evolution
-
-#pokemon_abitlity = API.new.get_pokemon_abilities
-#puts pokemon_abitlity
