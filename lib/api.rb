@@ -37,13 +37,13 @@ class API
         pokemon.exp = data["base_experience"]
     end
 
-    def get_poki_url
-        response = HTTParty.get(@pokemon_url).parsed_response
-    end
+    #def get_poki_url
+        #response = HTTParty.get(@pokemon_url).parsed_response
+   # end
 
-    def get_ability_url
-        response = HTTParty.get(@pokemon_ability).parsed_response
-    end
+    # def get_ability_url
+    #     response = HTTParty.get(@pokemon_ability).parsed_response
+    # end
 end 
 
 #pokemon = API.new.get_pokemon_list

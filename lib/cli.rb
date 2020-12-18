@@ -9,12 +9,12 @@ class CLI
     end
 
     def greeting
-        "Welcome to the world of POKEMON!"
+       puts "Welcome to the world of POKEMON!"
     end
 
     def menu
       @api = API.new
-      @api.get_pokemon_list
+      Pokemon.all.length == 0 ? @api.get_pokemon_list : nil
       Pokemon.display_pokemons
       puts "Which POKEMON do you want learn more about?"
         user_interaction
@@ -34,7 +34,7 @@ class CLI
     end
 
     def user_decision
-        puts "Do you want to look at another POKEMON?"
+        puts "Do you want to look at another POKEMON?(yes/no)"
         input = gets.chomp.downcase
         if input == "yes"
             menu
@@ -42,11 +42,12 @@ class CLI
             goodbye
         else
             puts "Entry does not exist. Please try again."
+            user_decision
         end 
     end
 
     def goodbye
-        puts "Catch those Pokemon!"
+        puts "Catch those POKEMON!"
         exit
     end
 end
